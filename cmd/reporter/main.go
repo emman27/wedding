@@ -21,6 +21,7 @@ func main() {
 		panic(err)
 	}
 	logger := logrus.New()
+	logger.SetFormatter(&logrus.TextFormatter{FullTimestamp: true})
 	logger.SetLevel(logLevel)
 	var counter rsvp.Counter = typeform.NewCounter(typeformAPIKey, logger.WithField("component", "typeform.Counter"))
 	attendeesChannel := make(chan int)
