@@ -2,9 +2,9 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 
+	"github.com/emman27/wedding/pkg/notifications/stdout"
 	"github.com/emman27/wedding/pkg/rsvp"
 	"github.com/emman27/wedding/pkg/rsvp/typeform"
 	"github.com/sirupsen/logrus"
@@ -24,17 +24,8 @@ func main() {
 	logger.SetFormatter(&logrus.TextFormatter{FullTimestamp: true})
 	logger.SetLevel(logLevel)
 	var counter rsvp.Counter = typeform.NewCounter(typeformAPIKey, logger.WithField("component", "typeform.Counter"))
-	attendeesChannel := make(chan int)
-	go func() {
-		attendees, err := counter.GetNumberOfAttendees()
-		if err != nil {
-			panic(err)
-		}
-		attendeesChannel <- attendees
-	}()
-	responses, err := counter.GetNumberOfResponses()
-	if err != nil {
+	var app = rsvp.NewApp(counter, stdout.NewSender(), rsvp.SetLogger(logger.WithField("component", "rsvp.App")))
+	if err = app.Run(); err != nil {
 		panic(err)
 	}
-	fmt.Printf("Number of responses: %d\nNumber of attendees: %d\n", responses, <-attendeesChannel)
 }
