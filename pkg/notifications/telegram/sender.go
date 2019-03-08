@@ -12,13 +12,11 @@ import (
 )
 
 // My personal chat details, set as default for convenience
-const (
-	emmanChatID = 207051227
-)
+const emmanChatID = 207051227
 
 const messagePrefix = `Hello! I'm your friendly chatbot to help with keeping track of the number of invites to your wedding!
 
-Here are your summary statistics for today!
+Here are your summary statistics so far!
 %s`
 
 var token = os.Getenv("TELEGRAM_BOT_TOKEN")
