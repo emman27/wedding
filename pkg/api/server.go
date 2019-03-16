@@ -7,12 +7,14 @@ import (
 	"time"
 )
 
+// RSVPRequest http structure
 type RSVPRequest struct {
 	Name    string `json:"name" binding:"required"`
 	Count   int    `json:"number_of_attendees" binding:"required"`
 	Contact string `json:"contact" binding:"required"`
 }
 
+// NewServer to serve HTTP requests
 func NewServer(db saver.Database) *gin.Engine {
 	r := gin.Default()
 	s := saver.NewSaver(db)
@@ -31,6 +33,7 @@ func NewServer(db saver.Database) *gin.Engine {
 	return r
 }
 
+// Implements saver.RSVP
 type rsvp struct{ *RSVPRequest }
 
 func (r rsvp) Name() string {

@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	s := api.NewServer(&database.InMemory{})
+	s := api.NewServer(database.NewInMemoryDB())
 	s.Run()
 }
