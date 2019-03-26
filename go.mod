@@ -3,6 +3,8 @@ module github.com/emman27/wedding
 go 1.12
 
 require (
+	cloud.google.com/go v0.37.2
+	firebase.google.com/go v3.6.0+incompatible
 	github.com/go-telegram-bot-api/telegram-bot-api v4.6.4+incompatible
 	github.com/gojektech/heimdall v5.0.2+incompatible
 	github.com/gojektech/valkyrie v0.0.0-20190210220504-8f62c1e7ba45 // indirect
@@ -11,6 +13,9 @@ require (
 	github.com/sirupsen/logrus v1.3.0
 	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
-	golang.org/x/crypto v0.0.0-20190228161510-8dd112bcdc25 // indirect
+	golang.org/x/oauth2 v0.0.0-20190319182350-c85d3e98c914 // indirect
 	golang.org/x/sys v0.0.0-20190306220723-b294cbcfc56d // indirect
+	google.golang.org/api v0.3.0
+	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
